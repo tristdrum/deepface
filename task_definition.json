@@ -1,0 +1,23 @@
+{
+  "family": "deepface-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "containerDefinitions": [
+    {
+      "name": "deepface-container",
+      "image": "930602531306.dkr.ecr.af-south-1.amazonaws.com/deepface:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 5000,
+          "hostPort": 5000,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "executionRoleArn": "arn:aws:iam::930602531306:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::930602531306:role/ecsTaskRole"
+}
